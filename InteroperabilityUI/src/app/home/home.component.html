@@ -1,0 +1,128 @@
+<label for="searchbox">Search Stock: </label>
+<input id="searchbox" name="searchbox" [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox">
+<a routerLink="/portfolio">Portfolio</a>
+<a (click)="logout()">Logout</a>
+
+
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> #id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <!-- Security Column -->
+  <ng-container matColumnDef="security">
+    <th mat-header-cell *matHeaderCellDef> Security </th>
+    <td mat-cell *matCellDef="let element"> {{element.security}} </td>
+  </ng-container>
+
+  <!-- previousClosePrice Column -->
+  <ng-container matColumnDef="previousClosePrice">
+    <th mat-header-cell *matHeaderCellDef> Prev. Close Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.previousClosePrice}} </td>
+  </ng-container>
+
+  <!-- Open Price Column -->
+  <ng-container matColumnDef="openPrice">
+    <th mat-header-cell *matHeaderCellDef> Open Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.openPrice}} </td>
+  </ng-container>
+
+  <!-- High Price Column -->
+  <ng-container matColumnDef="highPrice">
+    <th mat-header-cell *matHeaderCellDef> High Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.highPrice}} </td>
+  </ng-container>
+
+  <!-- Close Price Column -->
+  <ng-container matColumnDef="closePrice">
+    <th mat-header-cell *matHeaderCellDef> Close Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.closePrice}} </td>
+  </ng-container>
+
+  <!-- netTradeVaule Column -->
+  <ng-container matColumnDef="netTradeVaule">
+    <th mat-header-cell *matHeaderCellDef> Net Trd Value </th>
+    <td mat-cell *matCellDef="let element"> {{element.netTradeVaule}} </td>
+  </ng-container>
+
+  <!-- netTradeQuantity Column -->
+  <ng-container matColumnDef="netTradeQuantity">
+    <th mat-header-cell *matHeaderCellDef> Net Trd Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.netTradeQuantity}} </td>
+  </ng-container>
+
+  <!-- high52Week Column -->
+  <ng-container matColumnDef="high52Week">
+    <th mat-header-cell *matHeaderCellDef> 52 high </th>
+    <td mat-cell *matCellDef="let element"> {{element.high52Week}} </td>
+  </ng-container>
+
+  <!-- low52Week Column -->
+  <ng-container matColumnDef="low52Week">
+    <th mat-header-cell *matHeaderCellDef> 52 Low </th>
+    <td mat-cell *matCellDef="let element"> {{element.low52Week}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<!-- 
+<div class="content">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>#Id</th>
+        <th>Symbol</th>
+        <th>Security</th>
+        <th>Previous Close</th>
+        <th>Open Price</th>
+        <th>High Price</th>
+        <th>Close Price</th>
+        <th>Net Trade Vaule</th>
+        <th>Net Trade Quantity</th>
+        <th>High 52 Week</th>
+        <th>Low 52 Week</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="stocks?.length > 0">
+      <tr *ngFor="let stock of stocks | grdFilter: {symbol: searchText, security:searchText} | paginate: { itemsPerPage: pageSize, currentPage: p };">
+        <td>{{stock?.id}}</td>
+        <td>{{stock?.symbol}}</td>
+        <td>{{stock?.security}}</td>
+        <td>{{stock?.previousClosePrice}}</td>
+        <td>{{stock?.openPrice}}</td>
+        <td>{{stock?.highPrice}}</td>
+        <td>{{stock?.closePrice}}</td>
+        <td>{{stock?.netTradeVaule}}</td>
+        <td>{{stock?.netTradeQuantity}}</td>
+        <td>{{stock?.high52Week}}</td>
+        <td>{{stock?.low52Week}}</td>
+        <td>
+          <button (click)="addToPortfolio(stock)">Add In Portfolio</button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="stocks?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data!</td>
+      </tr>
+      <tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+ -->

@@ -1,0 +1,26 @@
+<div>
+  <h1>Login to Your Account</h1>
+  <br>
+  <div *ngIf="errorMessage" style="color: red" class="login-help">*{{errorMessage}}</div>
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <label for="uname">
+        <b>Username</b>
+      </label>
+      <input type="text" placeholder="Enter Username" formControlName="username" required>
+
+      <label for="psw">
+        <b>Password</b>
+      </label>
+      <input type="password" placeholder="Enter Password" formControlName="password" required>
+
+      <button [disabled]="loginFormGroup.invalid">Login</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <a routerLink="/signup">Register</a> -
+      <a routerLink="/forgotpassword">Forgot Password?</a>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="modal-dialog">
+  <div class="loginmodal-container">
+    <h1>Create Your Account</h1>
+    <br>
+    <form [formGroup]="signupFormGroup" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="username" placeholder="Username">
+      <input type="password" formControlName="password" placeholder="Password">
+      <button style="width: 100%; cursor: pointer;" [disabled]="signupFormGroup.invalid" name="login" class="login loginmodal-submit">Register</button>
+    </form>
+    <div class="login-help">
+      <a routerLink="/login">Already Registered?</a> -
+      <a routerLink="/forgotpassword">Forgot Password?</a>
+    </div>
+  </div>
+</div>
