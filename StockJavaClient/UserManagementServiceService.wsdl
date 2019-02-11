@@ -1,0 +1,203 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://users.interoperability.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="UserManagementServiceService" targetNamespace="http://users.interoperability.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://users.interoperability.com/" elementFormDefault="unqualified" targetNamespace="http://users.interoperability.com/" version="1.0">
+
+  <xs:element name="addStock" type="tns:addStock"></xs:element>
+
+  <xs:element name="addStockResponse" type="tns:addStockResponse"></xs:element>
+
+  <xs:element name="login" type="tns:login"></xs:element>
+
+  <xs:element name="loginResponse" type="tns:loginResponse"></xs:element>
+
+  <xs:element name="register" type="tns:register"></xs:element>
+
+  <xs:element name="registerResponse" type="tns:registerResponse"></xs:element>
+
+  <xs:element name="removeStock" type="tns:removeStock"></xs:element>
+
+  <xs:element name="removeStockResponse" type="tns:removeStockResponse"></xs:element>
+
+  <xs:complexType name="register">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="password" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"></xs:element>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="password" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="portfolio" nillable="true" type="tns:stock"></xs:element>
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stock">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="symbol" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="security" type="xs:string"></xs:element>
+      <xs:element name="previousClosePrice" type="xs:float"></xs:element>
+      <xs:element name="openPrice" type="xs:float"></xs:element>
+      <xs:element name="highPrice" type="xs:float"></xs:element>
+      <xs:element name="closePrice" type="xs:float"></xs:element>
+      <xs:element name="netTradeVaule" type="xs:double"></xs:element>
+      <xs:element name="netTradeQuantity" type="xs:long"></xs:element>
+      <xs:element name="high52Week" type="xs:float"></xs:element>
+      <xs:element name="low52Week" type="xs:float"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeStock">
+    <xs:sequence>
+      <xs:element name="stockId" type="xs:long"></xs:element>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeStockResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="login">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+      <xs:element minOccurs="0" name="password" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addStock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stock" type="tns:stock"></xs:element>
+      <xs:element minOccurs="0" name="username" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addStockResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStock">
+    <wsdl:part element="tns:removeStock" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addStockResponse">
+    <wsdl:part element="tns:addStockResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part element="tns:register" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeStockResponse">
+    <wsdl:part element="tns:removeStockResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addStock">
+    <wsdl:part element="tns:addStock" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserManagementService">
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:register" name="register">
+    </wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStock">
+      <wsdl:input message="tns:removeStock" name="removeStock">
+    </wsdl:input>
+      <wsdl:output message="tns:removeStockResponse" name="removeStockResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:login" name="login">
+    </wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addStock">
+      <wsdl:input message="tns:addStock" name="addStock">
+    </wsdl:input>
+      <wsdl:output message="tns:addStockResponse" name="addStockResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserManagementServiceServiceSoapBinding" type="tns:UserManagementService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="register">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeStock">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="removeStock">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="removeStockResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="login">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addStock">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="addStock">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="addStockResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManagementServiceService">
+    <wsdl:port binding="tns:UserManagementServiceServiceSoapBinding" name="UserManagementServicePort">
+      <soap:address location="http://localhost:8080/aInteroperabilityProjectbc/UserManagementService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
